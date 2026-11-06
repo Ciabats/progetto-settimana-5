@@ -41,17 +41,6 @@ a {
     align-items: center;
     border-bottom: #eee;
 
-    .logo {
-        margin: 0;
-        font-weight: 700;
-        font-size: 1.3rem;
-        color: hsl(150, 60%, 30%);
-
-        i {
-            margin-right: 5px;
-        }
-    }
-
     nav {
         ul {
             display: flex;
@@ -69,6 +58,18 @@ a {
         }
     }
 
+}
+
+/* Logo */
+.logo {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: hsl(150, 60%, 30%);
+
+    i {
+        margin-right: 5px;
+    }
 }
 
 .dark-mode {
@@ -154,8 +155,12 @@ section h2 {
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        img{
-            
+
+        img {
+            display: block;
+            width: 100%;
+            /* avendoci già max-width impedisce di sforare */
+            border-radius: 10px;
         }
     }
 
@@ -212,8 +217,250 @@ section h2 {
             margin: 0 auto;
             background-color: hsl(150, 60%, 30%);
             color: white;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: bold;
         }
+
+        h3 {
+            font-size: 1.1rem;
+            margin-top: 8px;
+        }
+
+        .role {
+            margin: 0 0 10px;
+            color: hsl(150, 60%, 30%);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .desc {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #555;
+        }
+    }
+}
+
+/* Carosello */
+.carousel {
+    overflow: hidden;
+    margin-bottom: 20px;
+
+    .carousel-scroll {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        width: max-content;
+
+        .testimonial {
+            flex-grow: 0;
+            flex-shrink: 0;
+            flex-basis: 250px;
+            margin-right: 20px;
+            background-color: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+            .avatar {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 50px;
+                width: 50px;
+                border-radius: 50%;
+                margin: 0 auto;
+                background-color: hsl(150, 60%, 30%);
+                color: white;
+                font-size: 1.3rem;
+                font-weight: bold;
+            }
+
+            p {
+                font-style: italic;
+                font-size: 0.9rem;
+            }
+
+            span {
+                color: #555;
+            }
+        }
+    }
+}
+
+/* Footer */
+#site-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    background-color: rgb(29, 26, 26);
+    color: #fafafa;
+    padding: 30px 20px;
+
+    p {
+        margin: 0;
+    }
+
+    .tagline {
+        font-size: 0.9rem;
+        color: #6b6969;
+    }
+
+    .copyright {
+        font-size: 0.8rem;
+        color: #6b6969;
+    }
+
+    .social {
+        display: flex;
+        gap: 10px;
+
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #555;
+        }
+    }
+}
+
+/* Modale */
+/* Chiusa */
+#overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    visibility: hidden;
+    opacity: 0;
+
+    .modal {
+        background-color: white;
+        border-radius: 10px;
+        padding: 15px;
+        width: 100%;
+        max-width: 450px;
+        overflow-y: auto;
+        height: 90vh;
+        position: relative;
+
+        #close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            border: none;
+            font-size: 1.5rem;
+            color: #555;
+        }
+
+        h2 {
+            text-align: left;
+            margin-top: 0;
+            color: hsl(150, 60%, 30%);
+        }
+
+        p {
+            color: #555;
+            margin-bottom: 18px;
+        }
+
+        form {
+            label {
+                display: block;
+                font-size: 0.9rem;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+
+            input,
+            select,
+            textarea {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #555;
+                border-radius: 8px;
+                font-size: 1rem;
+                margin-bottom: 15px;
+            }
+
+            textarea {
+                resize: vertical;
+            }
+
+            input:focus {
+                border-color: hsl(150, 60%, 30%);
+            }
+
+            select:focus {
+                border-color: hsl(150, 60%, 30%);
+            }
+
+            textarea:focus {
+                border-color: hsl(150, 60%, 30%);
+            }
+        }
+    }
+}
+
+/* Aperta */
+.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* MEDIA-QUERY */
+/* Tablet da 768px */
+@media (min-width: 768px) {
+    #site-header {
+        flex-direction: row;
+        /* logo e nav tornano affiancati */
+        justify-content: space-between;
+        /* logo a sinistra, nav a destra */
+        padding: 12px 32px;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+        /* titolo più grande */
+    }
+
+    .jobs,
+    .services,
+    .team,
+    .testimonials {
+        padding: 64px 40px;
+    }
+
+    #site-footer {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+}
+
+/* DESKTOP da 992px */
+@media (min-width: 1024px) {
+    .hero-title {
+        font-size: 3.5rem;
+    }
+
+    #site-footer {
+        flex-direction: row;
+        /* footer allineato */
+        justify-content: space-between;
+        text-align: left;
     }
 }
